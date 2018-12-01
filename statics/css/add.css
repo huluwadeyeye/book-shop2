@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+.body {
+	margin-top: 20px;
+}
+
+.author {
+	width: 20%;
+}
+.catagory {
+	width: 30%;
+}

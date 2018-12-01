@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+.myheader {
+	height: 240px;
+	padding-top: 60px;
+	background:url('../images/info_bg.jpg') no-repeat;
+}
+
+.header-photo {
+	margin: 0 auto;
+	width: 120px;
+	height: 120px;
+	border:#fff 3px solid;
+	overflow: hidden;
+	border-radius: 50%;
+}
+
+.header-photo img {
+	width: 120px;
+	height: auto;
+}
+
+.myname {
+	padding-top:10px;
+	text-align: center;
+	color: #FFF;
+	font-size: 17px;
+}
+
+.tip-name {
+	height: 50px;
+	line-height: 50px;
+	border-bottom: #CCC 1px solid;
+	margin-top: 20px;
+	color: blue;
+	padding-left: 5px;
+}
+
+.headerbox {
+	width: 480px;
+	height: 200px;
+	margin-right: 20px;
+}
+
+.infobox {
+	width: 50%;
+}
+
+.submit {
+	text-align: center;
+}
+
+.age {
+	width: 20%;
+}
+
+.body {
+	padding-top: 50px;
+}
+
+.header-style {
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+	margin: 0 auto;
+	border-radius: 50%;
+}
+.header-info {
+	text-align: center;
+	padding-top: 20px;
+}

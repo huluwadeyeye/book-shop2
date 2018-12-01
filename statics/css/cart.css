@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+.numsbox {
+	width: 100%;
+	display: flex;
+}
+
+.numsbox button {
+	width: 30px;
+	cursor: pointer;
+}
+.nums {
+	width: 40px;
+	height: 28px;
+	border:#CCC 1px solid;
+	text-align: center;
+	margin: 0px 5px;
+}
