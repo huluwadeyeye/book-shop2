@@ -1,0 +1,99 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+
+	<link rel="stylesheet" type="text/css" href="../css/base.css">
+	
+	<!--引入layui样式-->
+	<link rel="stylesheet" href="../static/css/layui.css">
+
+	<link rel="stylesheet" type="text/css" href="../css/login.css">
+
+</head>
+<body>
+	
+<div class="container w1200">
+	<div class="box">
+		<!--LOGO-->
+		<img src="../images/booklogo.png">
+<form action="logindo" method="post">
+		<!--登录框-->
+		<div class="login">
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">输入框</label>
+				<div class="layui-input-block">
+				  <input type="text" name="username" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input" id="username">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">密码框</label>
+				<div class="layui-input-block">
+				  <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" id="password">
+				</div>
+			</div>
+
+		</div>
+		
+		<!--按钮-->
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" type="submit" lay-submit lay-filter="formDemo" id="submit">立即登录</button>
+				<a href="/admin/reg"  class="layui-btn layui-btn-primary reg-button">注册</a>
+			</div>
+		</div>
+		</form>
+
+	</div>
+</div>
+
+<!--引入jquery-->
+<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+
+<!--引入layuijs-->
+<script src="../layer/layer.js"></script>
+<script src="../static/layui.js"></script>
+
+<script type="text/javascript">
+
+$(function(){
+
+	$("#submit").click(function(){
+
+		//获取用户名和密码
+		var username = $("#username").val();
+		var pwd = $("#password").val();
+
+		if (username.length<3 || pwd.length<4){
+			
+			layer.msg('请填写用户名和密码');
+
+		} else {
+
+			//异步AJAX验证
+
+			$.post('checklogin.php',{'uname':username,'pwd':pwd},function(data,status){
+				if (data == 'ok'){
+					layer.msg('登录成功！');
+					window.location.href= "list.php";
+				} else {
+					layer.msg('登录失败！');
+				}
+			})
+		}
+
+
+	})
+
+})
+
+
+</script>
+
+
+</body>
+</html>

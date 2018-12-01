@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+     .listtab td{
+	border:1px solid #ccc; 
+	font-size: 14px;
+	text-align: center;
+    height: 50px;}
+
+    .listtab{
+        margin: 0 auto;
+    }
+  
+    </style>
+<link rel="stylesheet" href="../static/css/layui.css"/>
+
+</head>
+
+
+<body>
+
+    <table class="listtab">
+        <tr>
+            <td>图片</td>
+            <td><img src="../{{photo.substr(8)}}" /></td>
+        </tr>
+        <tr >
+            <td width="10%">书名</td>
+            <td>{{bookname}}</td>
+        </tr>
+        <tr>
+            <td>作者</td>
+            <td>{{author}}</td>
+        </tr>
+        <tr>
+            <td>价格</td>
+            <td>{{price}}</td>
+        </tr>
+        <tr>
+            <td>出版社</td>
+            <td>{{cbs}}</td>
+        </tr>
+        
+        <tr>
+            <td>分类</td>
+            <td>{{catagory}}</td>
+        </tr>
+        <tr>
+            <td>上架日期</td>
+            <td>{{cbsdate}}</td>
+        </tr>
+
+        <tr>
+            <td>描述</td>
+            <td>{{desc}}</td>
+        </tr>
+        <tr>
+                <td></td>
+                <td>
+                    <a href="javascript:void(0)" class="layui-btn">立即购买</a>
+                    <a href="cart" class="layui-btn layui-btn-primary">加入购物车</a>
+                    <a href="/" class="layui-btn layui-btn-primary">返回</a>
+
+                 </td>
+            </tr>
+            
+
+        </table>
+</body>
+<!--引入JQUERY-->
+<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+
+<!--引入layuijs-->
+<script src="../static/layui.js"></script>
+<script></script>
+</html>

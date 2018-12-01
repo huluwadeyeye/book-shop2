@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>个人中心-注册</title>
+
+	<!--通用样式-->
+	<link rel="stylesheet" type="text/css" href="../css/base.css">
+
+	<!--引入layui样式-->
+	<link rel="stylesheet" href="../static/css/layui.css">
+
+	<!--引入页面样式-->
+	<link rel="stylesheet" type="text/css" href="../css/center.css">
+
+</head>
+
+<body>
+
+	<div class="header">
+		<div class="w1200">
+
+			<ul class="layui-nav" lay-filter="">
+
+				<li class="logo-ico"><img src="../images/logo-4.png"></li>
+
+				<li class="layui-nav-item"><a href="../index.html">首页</a></li>
+				<li class="layui-nav-item layui-this">
+					<a href="javascript:;">个人中心</a>
+					<dl class="layui-nav-child">
+						<!-- 二级菜单 -->
+						<dd><a href="center.php">个人资料</a></dd>
+						<dd><a href="list.php">图书管理</a></dd>
+						<dd><a href="../exit.html">退出系统</a></dd>
+					</dl>
+				</li>
+				<li class="layui-nav-item"><a href="">更多资源</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="container w1200">
+
+		<div class="myheader tip">
+			<div class="header-photo">
+				<img src="../images/user.jpg" id="myphoto" />
+			</div>
+			<p class="myname">jackjones</p>
+		</div>
+
+		<p class="tip-name">个人注册</p>
+
+		<form id="myform" action='regdo' method='POST' enctype='multipart/form-data'>
+			<div class="body clearfix">
+				<div class="fl headerbox">
+
+					<p class="header-style"><img src="../images/2.jpg" id="myheader" /></p>
+					<p class="header-info">请上传大小不超过1M的jpg,png或者GIF图片</p>
+
+					<input type="file" name="photo" id="photo" style="display: none;" />
+
+				</div>
+				<div class="fl infobox">
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">用户名</label>
+						<div class="layui-input-block">
+							<input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">密码</label>
+						<div class="layui-input-block">
+							<input type="password" name="pwd" required lay-verify="required" placeholder="请输入用密码" autocomplete="off" class="layui-input age">
+						</div>
+					</div>
+
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">自我介绍</label>
+						<div class="layui-input-block">
+							<textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="submit"><button type='submit' class="layui-btn" id="reg">注册</button></div>
+		</form>
+
+
+
+	</div>
+
+	<div class="footer">
+		<div class="w1200"><a href="">关于我们</a> </div>
+	</div>
+
+
+	<!--引入JQUERY-->
+	<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+
+	<!--引入layuijs-->
+	<script src="../static/layui.js"></script>
+
+	<script type="text/javascript">
+		layui.use('element', function () {
+			var element = layui.element;
+
+			//…
+		});
+	</script>
+
+
+	<script type="text/javascript">
+		$(function () {
+
+			//“替换”文件域控件
+			$("#myheader").click(function () {
+
+				$("#photo").click();
+
+			})
+
+			//接收表单数据
+			$("#reg").click(function () {
+
+				//安全规范检查
+
+				//实例化formData对象
+
+				var formData = new FormData($("#myform")[0]);
+
+				//ajax
+				// $.ajax({
+				// 	url: 'upload_async.php' ,
+				// 	type: 'POST',
+				// 	data: formData,
+				// 	dataType:'json',
+				// 	async: false,
+				// 	cache: false,
+				// 	contentType: false,
+				// 	processData: false,
+				// 	success: function (data) {
+
+				// 		if (data.result == 'success'){
+
+				// 			//提示
+				// 			layui.use('layer',function(){
+				// 				layer.msg('注册成功',{shift:-1},function(){
+				// 					window.location.href="login.php";
+				// 				});
+				// 			})
+
+				// 			//更新图片地址
+				// 			$("#myphoto").attr('src',data.path);
+
+				// 		} else {
+
+				// 			//提示
+				// 			layui.use('layer',function(){
+				// 				layer.msg('注册失败');
+				// 			})
+				// 		}
+
+
+				// 	},
+				// 	error: function () {
+				// 		console.log('err');
+				// 	}
+				// });
+
+			})
+
+		})
+	</script>
+
+</body>
+
+</html>

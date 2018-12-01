@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+
+	<!--通用样式-->
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	
+	<!--引入layui样式-->
+	<link rel="stylesheet" href="static/css/layui.css">
+	
+	<!--引入页面样式-->
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+
+</head>
+<body>
+	
+	<div class="header">
+		<div class="w1200">
+
+			<ul class="layui-nav" lay-filter="">
+
+				<li class="logo-ico"><img src="images/logo-4.png"></li>
+
+			  <li class="layui-nav-item layui-this"><a href="/">首页</a></li>
+			  <li class="layui-nav-item"><a href="/admin/cart">购物车</a></li>
+			  <li class="layui-nav-item">
+			    <a href="javascript:;">个人中心</a>
+			    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+			      <dd><a href="/admin/center">个人资料</a></dd>
+			      <dd><a href="/admin/list">图书管理</a></dd>
+			      <dd><a href="/admin/exit">退出系统</a></dd>
+			    </dl>
+			  </li>
+			  <li class="layui-nav-item"><a href="">联系我们</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+
+	<div class="container clearfix">
+		<div class="slide w1200">
+			
+			<div class="layui-carousel" id="test1">
+			  <div carousel-item>
+                <div><img src="images/slide-1.jpg"></div>
+			    <div><img src="images/slide-2.jpg"></div>
+			    <div><img src="images/slide-3.jpg"></div>
+			    <div><img src="images/slide-4.jpg"></div>
+			    <div><img src="images/slide-5.jpg"></div>
+                
+			  
+			  </div>
+			</div>
+
+		</div>
+
+		<div class="product-list w1200">
+
+			<ul id="datas">
+                {{each res}}
+                <li data-id="{{@$value._id}}" class="">
+                        <div class="box">
+                            <a href="/admin/view?id={{@$value._id}}" ><img src="./{{$value.photo.substr(8)}}"></a>
+                            <p>
+                                名称：{{$value.bookname}}
+                                <br>
+                                作者：{{$value.author}}
+                                <br>
+                                出版社：{{$value.cbs}}
+                                <br>
+                                价格：{{$value.price}}元
+                                <a href="javascript:void(0)" data-id="{{@$value._id}}" class="cart">加入购物车</a>
+                            </p>
+                        </div>
+                    </li>
+                    {{/each}}
+            
+            
+    
+            </ul>
+
+		</div>
+
+	</div>
+	
+
+	<div class="footer">
+		<div class="w1200"><a href="">关于我们</a> </div>
+	</div>
+
+
+<!--引入JQUERY-->
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+
+<!--引入layuijs-->
+<script src="static/layui.js"></script>
+
+<script>
+
+//注意：导航 依赖 element 模块，否则无法进行功能性操作
+layui.use('element', function(){
+  var element = layui.element;
+  
+  //…
+});
+
+//轮播
+layui.use('carousel', function(){
+
+  var carousel = layui.carousel;
+  //建造实例
+  carousel.render({
+    elem: '#test1'
+    ,width: '100%' //设置容器宽度
+    ,height:'350px'
+    ,arrow: 'always' //始终显示箭头
+    //,anim: 'updown' //切换动画方式
+  });
+});
+
+
+$(function(){
+
+	// 初始化数组
+	var arr = new Array();
+
+	// $(".product-list > ul > li").hover(function(){
+	// 	$(this).addClass("hover");
+	// },function(){
+	// 	$(this).removeClass("hover");
+	// });
+
+	//给未来元素绑定事件
+	$(document).on("mouseover",".product-list > ul > li",function(){
+		$(this).addClass("hover");
+	})
+
+	$(document).on("mouseout",".product-list > ul > li",function(){
+		$(this).removeClass("hover");
+	})
+
+	//详情页
+	$(document).on("click",".product-list > ul > li",function(){
+	
+		//获取当前记录ID
+		var id = $(this).attr("data-id");
+		
+	})
+
+	//使用load方法加载数据
+	$("#datas").load('getdata.php');
+
+	//购物车
+	$(document).on("click",".cart",function(){
+
+		//获取产品ID
+		var pid = $(this).attr('data-id');
+		console.log(pid)
+		layui.use('layer',function(){
+			layer.msg('恭喜得到一件宝贝*-*');
+		})
+		//放入本地存储
+		// setValue(pid);
+	
+
+　}
+	
+
+	})
+
+	//设置产品ID
+	function setValue(id){
+
+		if ($.inArray(id,arr) == -1){
+			arr.push(id);
+			localStorage.setItem('pid',arr);
+		}
+
+	}
+
+	//获取产品ID
+	function getValue(){
+		return localStorage.getItem('pid');
+	}
+
+
+
+})
+
+</script>
+
+</body>
+</html>
